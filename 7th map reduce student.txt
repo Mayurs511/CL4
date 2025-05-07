@@ -1,0 +1,30 @@
+def mapper(score):
+    if score > 80:
+        grade = 'A'
+    elif score > 60:
+        grade = 'B'
+    elif score > 40:
+        grade = 'C'
+    else:
+        grade = 'D'
+    return grade    
+
+def reducer(score_list):
+    new_scores = []
+    for row in score_list:
+        grade = mapper(row[1])
+        new_scores.append((row[0], grade))
+    
+    for row in new_scores:
+        print(f"Student {row[0]} received grade {row[1]}.")
+
+# Example list of student scores
+student_scores = [
+    (1, 85),
+    (2, 75),
+    (3, 55),
+    (4, 35),
+    (5, 90)
+]
+
+reducer(student_scores)

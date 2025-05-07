@@ -1,0 +1,18 @@
+1.Load in target system 
+
+
+http://services.odata.org/V3/Northwind/Northwind.svc/  
+
+steps:
+1.Open powerbi
+2: Click on Get data following list will be displayed → select Excel 
+3: Select required file and click on Open, Navigator screen appears 
+4: Select file and click on edit
+5: Power query editor appears
+6: Again, go to Get Data and select OData feed
+7: Paste url as  
+http://services.odata.org/V3/Northwind/Northwind.svc/  
+Click on ok
+8: Select orders table and click on edit  
+Note: If you just want to see preview you can just click on table name without clicking on checkbox  
+Click on edit to view table

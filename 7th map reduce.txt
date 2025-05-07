@@ -1,0 +1,26 @@
+# Mapper function that reads the file and splits the data into words
+def mapper(filename):
+    with open(filename, 'r') as f:
+        data = f.read()
+    words = data.strip().split()
+    return words
+
+# Reducer function that counts the frequency of each word in the word list
+def reducer(wordlist):
+    counts = {}
+    for word in wordlist:
+        if word in counts:
+            counts[word] += 1
+        else:
+            counts[word] = 1
+    return counts
+
+# Function to display the results
+def display(output):
+    for word, count in output.items():
+        print(f'{word} appears {count} times')
+
+# Example of processing
+mapped_data = mapper('words.txt')  # Provide the correct path to your file
+reduced_data = reducer(mapped_data)
+display(reduced_data)

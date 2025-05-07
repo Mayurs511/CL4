@@ -1,0 +1,214 @@
+1.Load in target system 
+
+
+http://services.odata.org/V3/Northwind/Northwind.svc/  
+
+steps:
+1.Open powerbi
+2: Click on Get data following list will be displayed → select Excel 
+3: Select required file and click on Open, Navigator screen appears 
+4: Select file and click on edit
+5: Power query editor appears
+6: Again, go to Get Data and select OData feed
+7: Paste url as  
+http://services.odata.org/V3/Northwind/Northwind.svc/  
+Click on ok
+8: Select orders table and click on edit  
+Note: If you just want to see preview you can just click on table name without clicking on checkbox  
+Click on edit to view table
+
+
+2.Perform the Extraction Transformation and Loading (ETL) process to construct the database in the SQL server / Power BI.
+
+
+Steps
+1: Open Power BI, Click on Get Data → OData Feed   
+    
+   Paste Url :
+  http://services.odata.org/V3/Northwind/Northwind.svc/ 
+   And Click OK
+
+2: Click on Check Box of Products table and then click on Edit 
+ 
+1) Remove other columns to only display columns of interest  
+In Query Editor, select the ProductID, ProductName, QuantityPerUnit, and UnitsInStock 
+columns (use Ctrl+Click to select more than one column, or Shift+Click to select columns that 
+are beside each other). 
+
+Select Remove Columns > Remove Other Columns from the ribbon, or right click on a column 
+header and click Remove Other Columns
+
+After selecting Remove Other Columns only selected four columns are displayed other 
+columns are discarded.
+
+Change the data type of the UnitsInStock column  
+a) Select the UnitsInStock column. 
+b) Select the Data Type drop-down button in the Home ribbon.   
+c) If not already a Whole Number, select Whole Number for data type from the drop down (the Data 
+Type: button also displays the data type for the current selection). 
+
+ 
+After clicking on Whole number, you can see the changed Datatype in column header of UnitsInStock 
+ 
+ 
+After above step, close query editor and click on Yes to save changes.  
+Now you can view fields of Products table on right side, check all the fields of table to get 
+representation in charts form. 
+ 
+ 
+ 
+3.  Expand the Orders table  
+ 
+Once You have loaded a data source, you can click on Recent Sources to select desired table (Orders).
+
+After selecting the URL, Navigator window will appear from which you can select Orders table.  
+Click on Edit. 
+Query Editor Window will appear  
+1. In the Query View, scroll to the Order_Details column.    
+2. In the Order_Details column, select the expand icon.    
+3. In the Expand drop-down:    
+a. Select (Select All Columns) to clear all columns.   
+b. Select ProductID, UnitPrice, and Quantity.   
+c. Click OK.   
+
+After clicking on OK following screen appears with combined columns 
+
+4. Calculate the line total for each Order_Details row  
+Power BI Desktop lets you to create calculations based on the columns you are importing, so you 
+can enrich the data that you connect to. In this step, you create a Custom Column to calculate the 
+line total for each Order_Details row.   
+Calculate the line total for each Order_Details row:    
+a) In the Add Column ribbon tab, click Add Custom Column. 
+
+
+b) In the Custom Column dialog box, in the Custom Column Formula textbox, enter          
+[Order_Details.UnitPrice] * [Order_Details.Quantity] by selecting from available columns 
+and click on insert for each column.  
+c) In the New column name textbox, enter LineTotal.   
+d) Click OK.   
+13 
+5. Rename and reorder columns in the query  
+In this step you finish making the model easy to work with when creating reports, by renaming the 
+final columns and changing their order.    
+a) In Query Editor, drag the LineTotal column to the left, after ShipCountry. 
+b) Remove the Order_Details. prefix from the Order_Details.ProductID, Order_Details.UnitPrice and 
+Order_Details.Quantity columns, by double-clicking on each column header, and then deleting that 
+text from the column name. 
+4. Combine the Products and Total Sales queries  
+Power BI Desktop does not require you to combine queries to report on them. Instead, you can create 
+relationships between datasets. These relationships can be created on any column that is common to 
+your datasets.  
+14 
+We have Orders and Products data that share a common 'ProductID' field, so we need to ensure there's 
+a relationship between them in the model we're using with Power BI Desktop. Simply specify in Power 
+BI Desktop that the columns from each table are related (i.e. columns that have the same values). 
+Power BI Desktop works out the direction and cardinality of the relationship for you. In some cases, it 
+will even detect the relationships automatically.   
+In this task, you confirm that a relationship is established in Power BI Desktop between the Products 
+and Total Sales queries   
+Step 1: Confirm the relationship between Products and Total Sales 1. First, we need to load the model 
+that we created in Query Editor into Power BI Desktop. From the Home ribbon of Query Editor, select 
+Close & Apply. 
+Step 2:  Power BI Desktop loads the data from the two queries. 
+Step 3: Once the data is loaded, select the Manage Relationships button Home ribbon   
+15 
+Step 4. Select the New… button 
+
+
+Step 5: When we attempt to create the relationship, we see that one already exists! As shown in the 
+Create Relationship dialog (by the shaded columns), the ProductsID fields in each query already have 
+an established relationship. 
+
+
+Step 6: Select Cancel, and then select Relationship view in Power BI Desktop. 
+ 
+Step 7: We see the following, which visualizes the relationship between the queries. 
+ 
+Step 8: When you double-click the arrow on the line that connects the to queries, an Edit Relationship 
+dialog appears. 
+ 
+Step 9: No need to make any changes, so we'll just select Cancel to close the Edit Relationship dialog. 
+
+
+
+
+
+dashboard 
+
+
+
+Step 1: Connect to Your Data Source 
+The first step in creating your Sales Dashboard using Power BI is to connect to your data 
+source. For this project, we will utilize a sales dataset from a USA-based superstore for the 
+year 2015. You can also download this dataset from here. This dataset contains 
+comprehensive sales information, including product details, categories, customer 
+segments, regions, order dates, sales, profits, etc. Establishing this data connection is the 
+foundation upon which we will build insightful visualizations and metrics to showcase 
+sales performance and trends. 
+To connect to a data store using Power BI - 
+Open Power BI Desktop. 
+Click "Home" > "Get Data" > select your data source (e.g., Excel, CSV, database). 
+Browse and select your dataset, then follow the prompts to configure the connection and 
+load data into Power BI. 
+35 
+
+
+Step 2: Create A New Report 
+The next step in our journey to build a Sales Dashboard using Power BI is to create a new 
+report canvas. After loading your data, click on the "Report View" tab (located on the left 
+side) in Power BI Desktop. This will open a blank canvas where you can start designing 
+your dashboard. Here, you'll add various visualizations, charts, and KPIs to represent your 
+sales data effectively. This canvas serves as a dynamic workspace to arrange and customize 
+elements that will form the basis of your interactive sales dashboard. 
+
+
+
+Step 3: Add Visualizations 
+In this pivotal step of our Sales Dashboard creation process, we'll add a wide range of 
+visualizations to convey vital insights from our data. To create these visualizations in 
+Power BI – 
+Drag and drop the required fields onto the visualization area. 
+Choose the appropriate visualization type (bar, line, or pie chart). 
+Customize the visualizations by configuring labels, colors, and other settings. 
+36 
+In this project, we will focus on below visualizations - 
+To visualize sales and profit trends over time, we'll add a combination bar and line chart. 
+The bars will represent monthly sales, while the line will represent profit. This dual-axis 
+visualization will provide a clear depiction of how sales and profit correlate month by 
+month, enabling us to spot trends and patterns. 
+For a comprehensive understanding of our sales distribution, we'll employ pie charts. These 
+charts will depict the proportion of sales across various segments, including regions, 
+customer segments, and shipping modes. 
+
+
+
+Step 4: Add the KPIs to the Dashboard 
+To add Key Performance Indicators (KPIs) to the dashboard, we'll utilize card 
+visualizations in Power BI - 
+Click on "Card" from the Visualizations pane. 
+Drag and drop the relevant field onto the "Values" section of the card. 
+Customize the card by adding appropriate titles and formatting. 
+For instance, you can create KPI cards to display metrics like Total Revenue, Average 
+Order Value, and Year-over-Year Growth. These concise visual elements provide 
+immediate insights into essential performance indicators, enhancing the dashboard's 
+impact and usability. In this project, we will add two KPIs, total sales and average sales 
+per order, in the dashboard. 
+
+
+
+37 
+Step 5: Add Filters and Interactivity 
+Adding filters and interactivity to the sales dashboard is crucial as it empowers users to 
+explore the data, focus on specific aspects, and gain deeper insights. Filters allow users to 
+dynamically adjust data views, making the dashboard adaptable to various scenarios. 
+Here's how to achieve it in Power BI - 
+From the "Visualizations" pane, select "Slicer." 
+Drag fields relevant to filtering (e.g., region, order date) onto the slicer. 
+Users can now interactively filter data by selecting options within the slicer. 
+This feature enables users to dynamically refine the displayed data dynamically, gaining 
+deeper insights and customizing their analysis according to specific criteria. In this 
+dashboard, we will add a filter based on the region feature. We have also added a title bar 
+in the canvas, as shown below.
+
+
+
